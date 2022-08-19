@@ -1,0 +1,77 @@
+{
+  "tableName": "movies",
+  "tableType": "OFFLINE",
+  "segmentsConfig": {
+    "timeColumnName": "millisSinceEpoch",
+    "timeType": "MILLISECONDS",
+    "replication": 1,
+    "schemaName" : "movies",
+    "retentionTimeUnit": "DAYS",
+    "retentionTimeValue": "365",
+    "segmentPushFrequency": "DAILY",
+    "segmentPushType": "APPEND"
+  },
+  "tenants": {
+    "broker":"DefaultTenant",
+    "server":"DefaultTenant"
+  },
+  "tableIndexConfig": {
+    "loadMode": "MMAP",
+    "noDictionaryColumns": [
+      "Ratings",
+      "WeekWiseCollectionInCr"
+    ],
+    "jsonIndexColumns": [
+      "Ratings",
+      "WeekWiseCollectionInCr"
+    ],
+    "sortedColumn": [
+      "millisSinceEpoch",
+      "timeStamp",
+      "hoursSinceEpoch",
+      "dateString"
+    ],
+    "invertedIndexColumns": [
+      "year"
+    ],
+    "starTreeIndexConfigs": [{
+      "dimensionsSplitOrder": [
+        "year",
+        "TotalCollectionInCrores"
+      ],
+      "skipStarNodeCreationForDimensions": [
+      ],
+      "functionColumnPairs": [
+        "COUNT__*"
+      ],
+      "maxLeafRecords": 1
+    }],
+    "bloomFilterConfigs": {
+      "title": {
+        "fpp": 0.01,
+        "maxSizeInBytes": 1000000,
+        "loadOnHeap": true
+      }
+    },
+    "rangeIndexColumns": [
+      "TotalCollectionInCrores"
+    ]
+  },
+  "ingestionConfig": {
+    "batchIngestionConfig": {
+      "segmentIngestionType": "APPEND",
+      "segmentIngestionFrequency": "DAILY"
+    },
+      "transformConfigs": [
+        {
+          "columnName": "Ratings",
+          "transformFunction": "jsonFormat(\"column\")"
+        },
+        {
+          "columnName": "WeekWiseCollectionInCr",
+          "transformFunction": "jsonFormat(\"column2\")"
+        }
+      ]
+    },
+  "metadata": {}
+}

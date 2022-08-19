@@ -1,0 +1,19 @@
+executionFrameworkSpec:
+  name: 'standalone'
+  segmentGenerationJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner'
+  segmentTarPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentTarPushJobRunner'
+jobType: SegmentCreationAndTarPush
+inputDirURI: '/home/ubaidullahmohammed/Downloads/PinotExapmle1/pinot-quick-start/data/'
+includeFileNamePattern: 'glob:**/import.json'
+outputDirURI: '/home/ubaidullahmohammed/Downloads/PinotExapmle1/pinot-quick-start/segments2/'
+overwriteOutput: true
+pinotFSSpecs:
+  - scheme: file
+    className: org.apache.pinot.spi.filesystem.LocalPinotFS
+recordReaderSpec:
+  dataFormat: 'json'
+  className: 'org.apache.pinot.plugin.inputformat.json.JSONRecordReader'
+tableSpec:
+  tableName: 'movies'
+pinotClusterSpecs:
+  - controllerURI: 'http://manual-pinot-controller:9000'

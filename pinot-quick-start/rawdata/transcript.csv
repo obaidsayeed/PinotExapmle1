@@ -1,0 +1,6 @@
+studentID,firstName,lastName,gender,subject,score,timestampInEpoch
+500,Lucci,Smith,Male,Physics,3.8,1570864400000
+500,Lucci,Smith,Male,English,3.5,1571036400000
+501,Bob,King,Male,Maths,3.2,1571900400000
+502,Nick,Young,Male,Physics,3.6,1572418800000
+503,James,Young,Male,Maths,3.8,1572419200000

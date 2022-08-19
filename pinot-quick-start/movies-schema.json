@@ -1,0 +1,71 @@
+{
+  "schemaName": "movies",
+  "dimensionFieldSpecs": [
+    {
+      "name": "id",
+      "dataType": "LONG"
+    },
+    {
+      "name": "title",
+      "dataType": "STRING"
+    },
+    {
+      "name": "genre",
+      "dataType": "STRING"
+    },
+    {
+      "name": "year",
+      "dataType": "INT"
+    },
+    {
+      "name": "Ratings",
+      "dataType": "JSON"
+    },
+    {
+      "name":"WeekWiseCollectionInCr",
+      "dataType": "JSON"
+    }
+  ],
+  "metricFieldSpecs": [
+    {
+      "name": "TotalCollectionInCrores",
+      "dataType":"INT"
+    }
+  ],
+  "dateTimeFieldSpecs": [
+    {
+      "name": "millisSinceEpoch",
+      "dataType": "LONG",
+      "format": "1:MILLISECONDS:EPOCH",
+      "granularity": "15:MINUTES"
+    },
+    {
+      "name": "hoursSinceEpoch",
+      "dataType": "INT",
+      "format": "1:HOURS:EPOCH",
+      "granularity": "1:HOURS"
+    },
+    {
+      "name": "dateString",
+      "dataType": "STRING",
+      "format": "1:DAYS:SIMPLE_DATE_FORMAT:yyyy-MM-dd",
+      "granularity": "1:DAYS"
+    },
+    {
+      "name": "hourString",
+      "dataType": "STRING",
+      "format": "1:HOURS:SIMPLE_DATE_FORMAT:yyyy-MM-dd HH:mm:ss",
+      "granularity": "1:HOURS"
+    },
+    {
+      "name": "timeStamp",
+      "dataType": "TIMESTAMP",
+      "format": "1:MILLISECONDS:TIMESTAMP",
+      "granularity": "1:MILLISECONDS"
+    }
+  ],
+  "primaryKeyColumns": [
+    "id",
+    "TotalCollectionInCrores"
+  ]
+}
